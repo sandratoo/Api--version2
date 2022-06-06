@@ -26,11 +26,11 @@ class Notes(db.Model):
 class Getnotes(Resource):
     def get(self):
         notes = Notes.query.all()
-        all_notes = []
+        output = []
         for note in notes:
             note_data = {"id":note.id,"title":note.title,"data":note.data}
-            all_notes.append(note_data)
-            return {"notes": all_notes},200
+            output.append(note_data)
+        return {"notes": output},200
 
 class Getnote(Resource):
     def get(self,id):
